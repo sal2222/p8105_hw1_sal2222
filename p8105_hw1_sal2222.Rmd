@@ -1,0 +1,16 @@
+---
+title: "p8105_hw1_sal2222"
+author: "Stephen Lewandowski"
+date: "2018-09-13"
+output: 
+  github_document:
+    toc: true
+---
+
+```{r setup, include = FALSE}
+library(tidyverse)
+```
+
+# Problem 1
+
+# Problem 2
