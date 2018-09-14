@@ -15,7 +15,7 @@ library(tidyverse)
 
 This problem focuses on variable types and coercion.
 
-## Create a dataframe
+## Create a mixed class dataframe
 
 First, I will create a data frame with a random sample from a uniform distribution, a logical vector indicating whether elements of the sample are greater than 2, a character vector, and a factor vector.
 
@@ -68,7 +68,7 @@ as.numeric(factor10)
 
 ```
 
-For the logial variable, the `as.numeric` function converts "TRUEs" and "FALSEs" to "1s" and "0s", respectively.
+For the logical variable, the `as.numeric` function converts "TRUEs" and "FALSEs" to "1s" and "0s", respectively.
 
 The `as.numeric` function does not work for the character variable. "NAs" are introduced by coersion for each observation.
 
@@ -96,5 +96,43 @@ as.numeric(as.character(factor10))
 
 ```
 
-
 # Problem 2
+
+This problem focuses on plotting and the use of inline R code.
+
+## Create a mixed class data frame
+
+Create a data frame comprised of:
+x: a random sample of size 1000 from a standard Normal distribution
+y: a random sample of size 1000 from a standard Normal distribution
+A logical vector indicating whether the x + y > 0
+A numeric vector created by coercing the above logical vector
+A factor vector created by coercing the above logical vector
+
+```{r create_5_var_df}
+set.seed(1)
+x <- rnorm(1000)
+
+set.seed(2)
+y <- rnorm(1000)
+
+logical_sum_xy <- x + y > 0
+
+numeric_from_logical <- as.numeric(logical_sum_xy)
+
+factor_from_logical <- as.factor(logical_sum_xy)
+
+five_variable_df = tibble(
+  x,
+  y,
+  logical_sum_xy,
+  numeric_from_logical,
+  factor_from_logical
+)
+
+five_variable_df
+
+```
+
+
+
