@@ -15,6 +15,8 @@ library(tidyverse)
 
 This problem focuses on variable types and coercion.
 
+## Create a dataframe
+
 First, I will create a data frame comprised of:
 a random sample of size 10 from a uniform[0, 5] distribution,
 a logical vector indicating whether elements of the sample are greater than 2,
@@ -28,9 +30,9 @@ random_sample <- runif(10, min = 0, max = 5)
 
 logical_GT2 <- random_sample > 2
 
-character10 <- c("Data", "science", "is", "the", "use", "of", "data", "to",                       "formulate", "and")
+character10 <- c("Data", "science", "is", "the", "use", "of", "data", "to", "formulate", "and")
 
-factor10 <- factor(c("green", "red", "red", "blue", "green", "blue", "green",                         "red",   "red", "blue"))
+factor10 <- factor(c("green", "red", "red", "blue", "green", "blue", "green", "red", "red", "blue"))
 
 problem1_df = tibble(
   random_sample,
@@ -43,23 +45,42 @@ problem1_df
 
 ```
 
-I will try to take the mean of each variable in my dataframe. 
+## Variable means
+I will attempt to take the mean of each variable in my dataframe. 
 
 ```{r take_means}
 
 mean(random_sample)
-
 mean(logical_GT2)
-
 mean(character10)
-
 mean(factor10)
 
 ```
 
-What works and what doesn’t? Why?
+*What works and what doesn’t? Why?*
 
 The random uniform distribution sample vector works because you can calculate the mean from the numeric class. The logical vector works because mean returns the proportion of "TRUE" observations. The charcter and factor vectors do not work. Both variables return "NA" because their class is neither numeric nor logical.
+
+## Apply as.numeric function
+*Write a code chunk that applies the as.numeric function to the logical, character, and factor variables (please show this chunk but not the output). What happens?*
+
+```{r reclass, results = 'hide', warning = FALSE}
+
+as.numeric(logical_GT2)
+as.numeric(character10)
+as.numeric(factor10)
+
+```
+
+For the logial variable, the `as.numeric` function converts "TRUEs" and "FALSEs" to "1s" and "0s", respectively.
+
+The `as.numeric` function does not work for the character variable. "NAs" are introduced by coersion.
+
+For the factor variable, the `as.numeric` function assigns an integer for each unique level.  In my example, "blue" is changed to "1", "green" is changed to "2", and "red" is changed to "3".
+
+
+## Multiple class conversions
+*In a second code chunk, convert your character variable from character to factor to numeric; similarly, convert your factor variable from factor to character to numeric. What happens?*
 
 
 # Problem 2
