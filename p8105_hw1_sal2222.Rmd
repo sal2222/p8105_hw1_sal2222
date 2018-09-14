@@ -57,7 +57,7 @@ mean(factor10)
 
 The random uniform distribution sample vector works because you can calculate the mean from the numeric class. The logical vector works because mean returns the proportion of "TRUE" observations. The charcter and factor vectors do not work. Both variables return "NA" because their class is neither numeric nor logical.
 
-## Apply as.numeric function
+## Apply `as.numeric` function
 *Write a code chunk that applies the as.numeric function to the logical, character, and factor variables. What happens?*
 
 ```{r reclass, results = 'hide', warning = FALSE}
@@ -87,12 +87,17 @@ as.numeric(as.character(factor10))
 
 Converting my character variable from character to factor to numeric assigned a unique level to each character and converted the levels to integers from 1 to 10.
 
-Converting my factor variable from factor to character to numeric returns "NAs" by coersion for each observation since the character strings cannot be converted to numeric values. 
-
-```{r {r reclass_multiple_output, echo = FALSE, warning = FALSE}
+```{r {r reclass_multiple_output_character, echo = FALSE, warning = FALSE}
 
 as.numeric(as.factor(character10))
-as.numeric(as.character(factor10))
+
+```
+
+Converting my factor variable from factor to character to numeric returns "NAs" by coersion for each observation since the character strings cannot be converted to numeric values. 
+
+```{r {r reclass_multiple_output_factor, echo = FALSE, warning = FALSE}
+
+as.numeric(as.factor(character10))
 
 ```
 
@@ -129,7 +134,7 @@ five_variable_df
 
 ```
 
-## Description of dataset vectors
+## Description of dataset 
 
 *The following is a short description of my data, including:  the size of the dataset, the mean and median of x, the proportion of cases for which the logical vector is TRUE.*
 
@@ -141,9 +146,44 @@ The proportion of cases for which the logical vector `logical_sum_xy` is "TRUE" 
 
 
 
-## Scatterplot of y vs x
+## Scatterplots of y vs x
+
+
+
+Next I will show a scatterplots of `y` vs `x`, with points colored according to `logical_sum_xy`, `numeric_from_logical`, and `factor_from_logical`. 
+
+### Colored by logical variable
+```{r yx_scatter_logical}
+
+ggplot(five_variable_df, aes(x = x, y = y, color = logical_sum_xy)) + geom_point()
+
+```
+
+The color scale in the above plot displays teal for "TRUE" and orange for "FALSE", based on the logical classification of `x + y > 0`. 
+
+### Colored by numeric variable
+
+```{r yx_scatter_numeric}
+
+ggplot(five_variable_df, aes(x = x, y = y, color = numeric_from_logical)) + geom_point()
+
+```
+
+The color scale in the above plot displays light blue for values of "1" and dark blue for values of "0". Because the variable class is classified as "numeric", a continuous, graduated color scale is provided. 
+
+### Colored by factor variable
+
+```{r yx_scatter_factor}
+
+ggplot(five_variable_df, aes(x = x, y = y, color = factor_from_logical)) + geom_point()
+
+```
+
+The color scale in the above plot displays teal for "TRUE" and orange for "FALSE". The variable class is classified as "factor",  and the color scale uses two colors to reflect the two factor levels contained in the variable.
+
 
 
 ## Export scatterplot to project directory
+
 
 
