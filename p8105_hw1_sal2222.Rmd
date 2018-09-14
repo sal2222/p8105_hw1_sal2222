@@ -30,7 +30,7 @@ character10 <- c("Data", "science", "is", "the", "use", "of", "data", "to", "for
 
 factor10 <- factor(c("green", "red", "red", "blue", "green", "blue", "green", "red", "red", "blue"))
 
-constructed_df = tibble(
+constructed_df <- tibble(
   random_sample,
   logical_GT2,
   character10, 
@@ -102,12 +102,7 @@ This problem focuses on plotting and the use of inline R code.
 
 ## Create a mixed class data frame
 
-Create a data frame comprised of:
-x: a random sample of size 1000 from a standard Normal distribution
-y: a random sample of size 1000 from a standard Normal distribution
-A logical vector indicating whether the x + y > 0
-A numeric vector created by coercing the above logical vector
-A factor vector created by coercing the above logical vector
+I will create a data frame comprised of two random samples from a standard Normal distribution, a logical vector indicating whether the sum of the random samples is greater than 0, and numeric and factor vectors derived from the logical vector. The first 10 rows of the data frame are displayed.
 
 ```{r create_5_var_df}
 set.seed(1)
@@ -122,7 +117,7 @@ numeric_from_logical <- as.numeric(logical_sum_xy)
 
 factor_from_logical <- as.factor(logical_sum_xy)
 
-five_variable_df = tibble(
+five_variable_df <- tibble(
   x,
   y,
   logical_sum_xy,
@@ -134,5 +129,21 @@ five_variable_df
 
 ```
 
+## Description of dataset vectors
+
+*The following is a short description of my data, including:  the size of the dataset, the mean and median of x, the proportion of cases for which the logical vector is TRUE.*
+
+The data frame `five_variable_df` has `r nrow(five_variable_df)` rows and `r ncol(five_variable_df)` columns.
+
+The length of variable `x` is `r length(five_variable_df$x)`. The mean of `x` is `r mean(five_variable_df$x)`. The median of `x` is `r median(five_variable_df$x)`.    
+
+The proportion of cases for which the logical vector `logical_sum_xy` is "TRUE" is `r mean(five_variable_df$logical_sum_xy)`. 
+
+
+
+## Scatterplot of y vs x
+
+
+## Export scatterplot to project directory
 
 
