@@ -117,9 +117,7 @@ set.seed(2)
 y <- rnorm(1000)
 
 logical_sum_xy <- x + y > 0
-
 numeric_from_logical <- as.numeric(logical_sum_xy)
-
 factor_from_logical <- as.factor(logical_sum_xy)
 
 five_variable_df <- tibble(
@@ -134,21 +132,17 @@ five_variable_df
 
 ```
 
-## Description of dataset 
+## Description of dataset using inline R code 
 
 *The following is a short description of my data, including:  the size of the dataset, the mean and median of x, the proportion of cases for which the logical vector is TRUE.*
 
-The data frame `five_variable_df` has `r nrow(five_variable_df)` rows and `r ncol(five_variable_df)` columns.
+The data frame `five_variable_df` has `r nrow(five_variable_df)` observations (rows) and `r ncol(five_variable_df)` variables (columns).
 
 The length of variable `x` is `r length(five_variable_df$x)`. The mean of `x` is `r mean(five_variable_df$x)`. The median of `x` is `r median(five_variable_df$x)`.    
 
 The proportion of cases for which the logical vector `logical_sum_xy` is "TRUE" is `r mean(five_variable_df$logical_sum_xy)`. 
 
-
-
 ## Scatterplots of y vs x
-
-
 
 Next I will show a scatterplots of `y` vs `x`, with points colored according to `logical_sum_xy`, `numeric_from_logical`, and `factor_from_logical`. 
 
